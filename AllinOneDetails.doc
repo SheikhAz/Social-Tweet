@@ -11,3 +11,97 @@ static images
 Customized Setting
 
 The Project Name is "Social Tweet"
+
+Now we can start the process of making A Social Tweet Project...
+
+First step creata a virtual environment for the project.
+"python -m venv .venv"
+creating this virtual environment for other user that know which type of module or library we used in this project.
+
+then create a django project..
+"django-admin startproject Social_Tweet"
+
+for Error Correction:
+"python .\manage.py makemigrations"
+"python .\manage.py migrate"
+
+phir superuser se admin dashborad ko access karne ke liye username aur password dena hai..
+"python .\manage.py createsuperuser"
+
+Phir server run kardo dekhne ke liye admin work kar rha hai ki nhi.
+"python .\manage.py runserver"
+
+phir setting.py main ja kar os ko import kardo image bhi use hoga.phir media_url ko likhne dena setting main.
+
+"import os"
+"MEDIA_URL = '/media/'"
+"MEDIA_ROOT = os.path.join(BASE_DIR, 'media')"
+
+phir ek aur command likh dena setting.py main static.ismain humlog apna css , html aur javascript ke code store kar sakte hai..
+
+"STATIC_URL = 'static/'"
+"STATICFILES_DIR = [os.path.join(BASE_DIR , 'static')]"
+this [] is used for telling django this file is a list type.
+
+yeah sab karne ke baad urls.py main ja kar urlpatterns ke last main ja kar yeah code likhna hai + lga kar.
+yeah bhi import karna padega.
+
+"from django.conf import settings"
+"from django.conf.urls.static import static"
+
+"+ static(setttings.MEDIA_URL , document_root = settings.MEDIA_ROOT)"
+
+yeah sab karne ke baad ab startapp karna hai...
+idhar hi developement start hoga project ka..
+
+"python .\manage.py startapp Tweet"
+
+phir yeah comman file ko create karna hota hai..
+urls.py
+forms.py
+
+joh urls.py hai usmain dusre urls.py ke saare data copy paste kardo.bs last line nhi karna hota hai..static wala..faltu data ko remove kar dena hai.
+
+phir ek demo index.html bana do views main jisko urls se connect karna hai isliye liye....
+
+SAB SE IMPORTAND WORK YEAH THA KI PROJECT JO BATANA NEW APP BANA HAI..
+ISKO KARNE KE LIYE setting.py MAIN JANE KA HAI.....INSTALLED_APP MAIN ADD KARNA HAI."Tweet".
+
+yeah karne ke baad phir setting.py main template ke section main path add kar dena hai..
+yeah isliye use karte hai. project ko batana ne kiye ek template wla file use hoga. yeah app main hai..
+DIR ke andar.
+
+phir joh main project tha social_tweet uske andar ek folder banalo templates ke naam se phir uske andar html ke files bana lo....
+
+phir yeah sab karne ke baad main urls.py main ja kar include add karna hai..joh url main likhne se website open hoga yeah simple page open hoga..
+
+Idhar se naya baat yeah hai ki..ek base templete bana hai social tweet ke andar
+jismain layout.html rhga. isse bahut aasani ho jyega...
+
+tailwind ko install karna hai project main.
+"pip install django-tailwind"
+"pip install 'django-tailwind[reload]'"
+
+then setting.py main ja kar installed app main bta dena hai ki new app aaya tailwind ke naam se.
+
+phir command terminal main yeah command run karna hai.
+"python manage.py tailwind init"
+
+yeah karne ke baad setting.py main ja kar installed app main phir theme ke naam se app likh do.
+
+theme likhne ke baad yeah bhi likh dena setting.py main
+"NPM_BIN_PATH = "C:/Program Files/nodejs/npm.cmd""
+nhi toh error aayega.
+
+phir yeah command run karna terminal per
+"python manage.py tailwind install"
+
+phir hotreload ko add karte hai....
+setting.py main 
+"django_browser_reload"
+
+phir middleware main yeah add kardena
+""django_browser_reload.middleware.BrowserReloadMiddleware""
+
+then urls.py main url_pattern ke last path main yeah add kardena.
+"path("__reload__/", include("django_browser_reload.urls")),"
