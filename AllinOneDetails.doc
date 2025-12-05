@@ -105,3 +105,43 @@ phir middleware main yeah add kardena
 
 then urls.py main url_pattern ke last path main yeah add kardena.
 "path("__reload__/", include("django_browser_reload.urls")),"
+
+Phir yeah sab karne ke baad layout.html main ja kar top main yeah likhna hai
+"{% load static tailwind_tags %}"
+phir uske baad head main yeah likhna hai.
+"{% tailwind_css %}"
+yeah karne se tailwind access aa janta html main.
+
+layout.html aur apne index ko jodne ke liye extend keyword ka use karo.
+
+phir model banane main chlte hai..
+
+sab se pahle kaam yeah karo model.py main
+"from django.contrib.auth.models import User"
+phir uske baad class banayege...
+
+Charfield -----> yeah ek simple line layega.
+Textfield -----> yeah ek Bada Line layega.
+
+class define karne ke baad joh niche def __str__
+yeah isliye user karte hai save karlega toh admin dashboard main kya value show karana chata hai woh..
+f'{self.user.username} - {self.text[:6]} ismain self.user.username kon yeah tweet kiya hai uska username aur woh kya text kiya woh usmain bhi sirf starting ke 5 word
+
+yeah sab karne ke baad admin.py main bhi register karna hai.
+"admin.site.register(Tweet)"
+
+iske baad migration karna padhta hai.
+python .\manage.py makemigrations Tweet
+python .\manage.py migrate
+
+ab forms main chalte hai...
+yeah ek comman standard hai isko karna padega hi..
+class TweetForm(forms.ModelForm):
+    class meta:   yeah comman standard hai....
+        model = Tweet    yeah model bta rha hai
+        fields = ['text' ,'image']   yeah model ke andar use hone wla sab field hai.
+
+
+Now we go for views.py where we import some modules...
+here we import modules get_object or 404 this we use for get object if object is not found that it give 404...
+views.py main jitna bhi form banane ke baad html main uske liye design bana rheta hai.
