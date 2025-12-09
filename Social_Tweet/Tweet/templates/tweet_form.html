@@ -1,1 +1,15 @@
 {% extends "layout.html" %}
+{% block title %}Social Tweet{% endblock %}
+{% block content %}
+<body class = "bg-black">
+<h2>
+    {% if form.instance.pk %}
+    Edit Tweet
+    {% else%} 
+    Create Tweet
+    {% endif %}
+</h2>
+    
+</body>
+
+{% endblock %}
