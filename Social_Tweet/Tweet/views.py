@@ -32,12 +32,12 @@ def tweet_edit(request , tweet_id):
     if request.method == "POST":
         form = TweetForm(request.POST ,request.FILES ,instance=tweet)
         if form.is_valid:
-            tweet = form.save(commit = "False")
+            tweet = form.save(commit = False)
             tweet.user = request.user
             tweet.save()
             return redirect('tweet_list')
     else:
-        return TweetForm(instance=tweet)
+        form = TweetForm(instance=tweet)
     return render(request, 'tweet_form.html', {'form': form})
 
 def tweet_delete(request , tweet_id):

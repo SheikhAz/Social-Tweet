@@ -1,15 +1,60 @@
 {% extends "layout.html" %}
-{% block title %}Social Tweet{% endblock %}
-{% block content %}
-<body class = "bg-black">
-<h2>
-    {% if form.instance.pk %}
-    Edit Tweet
-    {% else%} 
-    Create Tweet
-    {% endif %}
-</h2>
-    
-</body>
+{% block title %}Create Tweet{% endblock %}
 
+{% block content %}
+<div class="min-h-screen bg-[#0d1117] flex justify-center pt-10 px-4">
+
+    <div class="bg-[#161b22] w-full max-w-md rounded-xl p-5 shadow-lg border border-gray-700">
+
+        <!-- Header -->
+        <h2 class="text-white text-lg font-semibold mb-4">
+            {% if form.instance.pk %}
+                Edit Tweet
+            {% else %}
+                Create Tweet
+            {% endif %}
+        </h2>
+
+        <!-- Form -->
+        <form method="post" enctype="multipart/form-data" class="space-y-4">
+            {% csrf_token %}
+
+            <!-- Text Area (Tweet Content) -->
+            <div>
+                <label class="text-gray-300 text-sm">Write your tweet</label>
+                <textarea 
+                    name="text" 
+                    rows="4"
+                    class="mt-1 w-full bg-[#0d1117] border border-gray-600 text-white p-3 rounded-md focus:ring-blue-500 focus:border-blue-500 outline-none"
+                    placeholder="What's happening?"
+                >{{ form.text.value|default:'' }}</textarea>
+            </div>
+
+            <!-- Image Upload -->
+            <div>
+                <label class="text-gray-300 text-sm">Upload an image (optional)</label>
+                <input 
+                    type="file" 
+                    name="image"
+                    class="mt-1 block w-full text-gray-300 bg-[#0d1117] border border-gray-600 p-2 rounded-md cursor-pointer"
+                >
+            </div>
+
+            <!-- Submit Button -->
+            <button 
+                type="submit" 
+                class="w-full bg-blue-600 hover:bg-blue-500 text-white font-medium py-2 rounded-md transition">
+                Post
+            </button>
+        </form>
+
+        <!-- Back Link -->
+        <div class="mt-4 text-center">
+            <a href="{% url 'tweet_list' %}" class="text-blue-400 hover:underline text-sm">
+                Back to Tweet List
+            </a>
+        </div>
+
+    </div>
+</div>
 {% endblock %}

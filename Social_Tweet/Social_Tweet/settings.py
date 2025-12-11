@@ -125,8 +125,9 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.2/howto/static-files/
 
-STATIC_URL = 'static/'
-STATICFILES_DIR = [os.path.join(BASE_DIR , 'static')]  # this [] is for list.telling django that this file is a list type...
+STATIC_URL = '/static/'
+# this [] is for list.telling django that this file is a list type...
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static'),]
 
 MEDIA_URL = '/media/'     #isko isliye use kar rhe kyu ki image use kar rhe hai na.yeah joh media hai ek file banega image upload karne ke baad idhar hi save hoga.
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
